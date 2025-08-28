@@ -10,17 +10,26 @@ def microservice():
 # Testing AES-GCM which is block cipher using Galois Counter Mode
 def encryption_test():
     initialdata = microservice() # Data is amir
-    final_data = b""+initialdata
+    print("pre-encrypted data ") 
+    print( initialdata)
+    data = initialdata.encode("utf-8")
 
     key = AESGCM.generate_key(bit_length=128) 
+    print("key:")
+    print(key)
+
     aesgcm = AESGCM(key)
     nonce = os.urandom(12)
-    cipher_text = aesgcm.encrypt(nonce,final_data,None)
+    cipher_text = aesgcm.encrypt(nonce,data,None)
 
+    print("encrypted data ")
+    print(cipher_text)
 
     # decrypting
-    aesgcm.decrypt(nonce,cipher_text,None)
+    after_decrypt = aesgcm.decrypt(nonce,cipher_text,None)
 
+    print("decrypted data " )
+    print(after_decrypt )
 
 
 
@@ -28,11 +37,9 @@ def encryption_test():
 
 
 def main():
-    #encryption_test
-    initialdata = microservice() # Data is amir
-    final_data = b""+initialdata
+    encryption_test()
 
-    print(final_data)
+    
     
 
 
