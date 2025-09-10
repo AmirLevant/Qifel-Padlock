@@ -5,7 +5,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 class Qifel:
     def __init__(self):
-        # This dictionary stores root keys for each user
+        # dictionary storing root keys for each user
         self.user_root_keys = {}
         print("Qifel key management system initialized!")
 
@@ -32,7 +32,7 @@ class Qifel:
             algorithm=hashes.SHA256(),
             length=32,
             salt=None,
-            info=service_name.encode('utf-8'),  # Service name makes it different
+            info=service_name.encode('utf-8'),  # service name makes it different
         )
         
         derived_key = hkdf.derive(root_key)
